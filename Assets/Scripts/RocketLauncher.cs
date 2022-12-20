@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class RocketLauncher : MonoBehaviour
 {
-    public GameObject cameraPosition;
+    public Camera cameraPOVRS;
+    public Camera cameraEnd;
     public GameObject rocketPrefab;
-    public GameObject spawnPosition;
     public RaycastHit target;
     public float speed = 20f;
 
     private void Start(){
-        cameraPosition.transform.position = spawnPosition.transform.position;
+        cameraPOVRS.enabled = true;
+        cameraEnd.enabled = false;
+        cameraEnd.transform.LookAt(target.point);
     }
 
     // Update is called once per frame
@@ -22,9 +24,9 @@ public class RocketLauncher : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
             target = new RaycastHit();
          
-            if( Physics.Raycast( ray, out target, 999999 ) )
+            if( Physics.Raycast( ray, out target, 3000 ) )
             {
-                GameObject rocket = Instantiate(rocketPrefab, spawnPosition.transform.position, rocketPrefab.transform.rotation);
+                GameObject rocket = Instantiate(rocketPrefab, cameraPOVRS.transform.position, rocketPrefab.transform.rotation);
                 rocket.transform.LookAt(target.point);
                 StartCoroutine(SendHoming(rocket));
             }
@@ -37,8 +39,8 @@ public class RocketLauncher : MonoBehaviour
         while(GameObject.Find("Tank") != null && Vector3.Distance(target.point, rocket.transform.position) > 0.3f)
         {
             if(target.transform.gameObject.tag == "Target" && Vector3.Distance(target.point, rocket.transform.position) < 25f){
-                cameraPosition.transform.position = new Vector3(target.point.x + 15f, target.point.y + 15f, target.point.z + 15f);
-                cameraPosition.transform.LookAt(target.point);
+                cameraEnd.enabled = true;
+                cameraPOVRS.enabled = false;
             }
 
             rocket.transform.position += (target.point - rocket.transform.position).normalized * speed * Time.deltaTime;
