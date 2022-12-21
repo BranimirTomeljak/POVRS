@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FogDensitySimulator : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         RenderSettings.fog = true;
         RenderSettings.fogDensity = FogSlider.fogDensityValue;      //[0, 0.05f]
