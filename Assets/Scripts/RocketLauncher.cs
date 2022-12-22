@@ -13,7 +13,6 @@ public class RocketLauncher : MonoBehaviour
     private void Start(){
         cameraPOVRS.enabled = true;
         cameraEnd.enabled = false;
-        cameraEnd.transform.LookAt(target.point);
     }
 
     // Update is called once per frame
@@ -39,11 +38,12 @@ public class RocketLauncher : MonoBehaviour
         while(GameObject.Find("Tank") != null && Vector3.Distance(target.point, rocket.transform.position) > 0.3f)
         {
             if(target.transform.gameObject.tag == "Target" && Vector3.Distance(target.point, rocket.transform.position) < 25f){
+                cameraEnd.transform.LookAt(target.point);
                 cameraEnd.enabled = true;
                 cameraPOVRS.enabled = false;
             }
 
-            rocket.transform.position += (target.point - rocket.transform.position).normalized * speed * Time.deltaTime;
+            rocket.transform.position += (target.transform.position - rocket.transform.position).normalized * speed * Time.deltaTime;
             rocket.transform.LookAt(target.point);
             yield return null;
         }

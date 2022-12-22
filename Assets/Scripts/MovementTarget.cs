@@ -19,6 +19,10 @@ public class MovementTarget : MonoBehaviour
     public static int movespeed = 1;
     public Vector3 userDirection = Vector3.back;
     // Start is called before the first frame update
+
+    void Awake(){
+        //transform.rotation = new Vector3(0,0,0);
+    }
     void Start()
     {
         //targetPosition = GetRandomPosition();
