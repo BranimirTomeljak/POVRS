@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class RocketCollision : MonoBehaviour
 {
+    public Camera cameraPOVRS;
+    public Camera cameraEnd;
     public GameObject target;
     public GameObject launcher;
     public AudioClip explosionSound;
@@ -12,6 +14,8 @@ public class RocketCollision : MonoBehaviour
     
     void Awake()
     {
+        cameraPOVRS = GameObject.Find("PlayerCamera").GetComponent<Camera>();
+        cameraEnd = GameObject.Find("Camera1").GetComponent<Camera>();
         target = GameObject.Find("Tank");
         launcher = GameObject.Find("RocketSpawnPoint");
     }
@@ -28,6 +32,11 @@ public class RocketCollision : MonoBehaviour
             Destroy(target);
         }
         else{
+            if(cameraEnd.enabled && collisionInfo.collider.tag != "Target"){    //u slucaju da se kamera pomakne, a ipak ne pogodi metu
+                cameraPOVRS.enabled = true;
+                cameraEnd.enabled = false;
+            }
+            
             AudioSource.PlayClipAtPoint(explosionSound, launcher.transform.position);
             Destroy(GameObject.Find("missile(Clone)"));
         }
