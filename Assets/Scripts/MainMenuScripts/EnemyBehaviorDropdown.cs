@@ -6,17 +6,15 @@ using UnityEngine;
 
 public class EnemyBehaviorDropdown : MonoBehaviour
 {
-    
-    public static string enemyBehaviorSelected = "Neprijatelj statičan";
 
     [SerializeField] private TMP_Text numberText;
     public void DropownChoose(int index)
     {
         switch(index)
         {
-            case 0: enemyBehaviorSelected = "Neprijatelj statičan"; break;
-            case 1: enemyBehaviorSelected = "Neprijatelj dinamičan"; break;
-            default: enemyBehaviorSelected = "Neprijatelj statičan"; break;
+            case 0: PlayerPrefs.SetString("enemyBehaviorSelected", "Neprijatelj statičan"); break;
+            case 1: PlayerPrefs.SetString("enemyBehaviorSelected", "Neprijatelj dinamičan"); break;
+            default: PlayerPrefs.SetString("enemyBehaviorSelected", "Neprijatelj statičan"); break;
         }
     }
 

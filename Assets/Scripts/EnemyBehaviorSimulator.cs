@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class EnemyBehaviorSimulator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    void Awake()
     {
-        //EnemyBehaviorDropdown.enemyBehaviorSelected //ovo je vrijednost koju smo odabrali u main menu sceni
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(PlayerPrefs.GetString("enemyBehaviorSelected") == "Neprijatelj statičan"){
+            transform.GetComponent<MovementTarget>().enabled = false;
+            transform.GetComponent<ObjectAlignment>().enabled = false;
+        }
     }
 }

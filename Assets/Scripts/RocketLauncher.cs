@@ -43,7 +43,10 @@ public class RocketLauncher : MonoBehaviour
                 cameraPOVRS.enabled = false;
             }
 
-            rocket.transform.position += (target.transform.position - rocket.transform.position).normalized * speed * Time.deltaTime;
+            if(target.transform.gameObject.tag == "Target" && PlayerPrefs.GetString("enemyBehaviorSelected") == "Neprijatelj dinamičan")
+                rocket.transform.position += (target.transform.position - rocket.transform.position).normalized * speed * Time.deltaTime;
+            else
+                rocket.transform.position += (target.point - rocket.transform.position).normalized * speed * Time.deltaTime;
             rocket.transform.LookAt(target.point);
             yield return null;
         }

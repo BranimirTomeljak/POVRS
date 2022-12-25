@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class FogSlider : MonoBehaviour
 {
-    public static float fogDensityValue = 0f;
-
     public void OnValueChanged(float value)
     {
-        fogDensityValue = value;
+        PlayerPrefs.SetFloat("fogDensityValue", value);
     }
-
 }
