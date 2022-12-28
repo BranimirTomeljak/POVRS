@@ -10,6 +10,8 @@ public class RocketCollision : MonoBehaviour
     public GameObject target;
     public GameObject launcher;
     public AudioClip explosionSound;
+    public ParticleSystem explosionTank;
+    public ParticleSystem explosionElse;
     public bool hit = false;
     
     void Awake()
@@ -29,6 +31,8 @@ public class RocketCollision : MonoBehaviour
             AudioSource.PlayClipAtPoint(explosionSound, launcher.transform.position);
             Debug.Log("pogodio tenk!");
             hit = true;
+
+            Instantiate(explosionTank, target.transform.position, Quaternion.identity);
             Destroy(target);
         }
         else{
@@ -38,7 +42,12 @@ public class RocketCollision : MonoBehaviour
             }
             
             AudioSource.PlayClipAtPoint(explosionSound, launcher.transform.position);
+            Instantiate(explosionElse, GameObject.Find("missile(Clone)").transform.position, Quaternion.identity);
             Destroy(GameObject.Find("missile(Clone)"));
+
+            if(!collisionInfo.collider.name.StartsWith("Ground") && !collisionInfo.collider.name.StartsWith("Rock")){
+                Destroy(collisionInfo.collider.gameObject);
+            }
         }
     }
 }
