@@ -10,6 +10,7 @@ public class RocketCollision : MonoBehaviour
     public GameObject target;
     public GameObject launcher;
     public AudioClip explosionSound;
+    public AudioClip explosionSoundQuiet;
     public ParticleSystem explosionTank;
     public ParticleSystem explosionElse;
     public bool hit = false;
@@ -41,7 +42,11 @@ public class RocketCollision : MonoBehaviour
                 cameraEnd.enabled = false;
             }
             
-            AudioSource.PlayClipAtPoint(explosionSound, launcher.transform.position);
+            //explosionSound.
+            if(collisionInfo.collider.name.StartsWith("Rock"))
+                AudioSource.PlayClipAtPoint(explosionSound, launcher.transform.position);
+            else
+                AudioSource.PlayClipAtPoint(explosionSoundQuiet, launcher.transform.position);
             Instantiate(explosionElse, GameObject.Find("missile(Clone)").transform.position, Quaternion.identity);
             Destroy(GameObject.Find("missile(Clone)"));
 

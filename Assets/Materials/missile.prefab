@@ -4894,6 +4894,7 @@ MonoBehaviour:
   target: {fileID: 0}
   launcher: {fileID: 0}
   explosionSound: {fileID: 8300000, guid: 71db613e04a86a545b67aed448d91082, type: 3}
+  explosionSoundQuiet: {fileID: 8300000, guid: 325bf9938c53c5f409ed1b182ebce48b, type: 3}
   explosionTank: {fileID: 6595104980576682600, guid: 7e6b321c463655c43b5d1e3b4035c3f3, type: 3}
   explosionElse: {fileID: 6595104980576682600, guid: d4beaf71e53029048ad2dae0fbbf1df7, type: 3}
   hit: 0
