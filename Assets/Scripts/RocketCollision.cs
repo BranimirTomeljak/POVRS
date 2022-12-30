@@ -38,7 +38,7 @@ public class RocketCollision : MonoBehaviour
             Instantiate(explosionTank, target.transform.position, Quaternion.identity);
             Destroy(target);
             StartCoroutine(NewHeading());
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else{
             if(cameraEnd.enabled && collisionInfo.collider.tag != "Target"){    //u slucaju da se kamera pomakne, a ipak ne pogodi metu
@@ -63,7 +63,7 @@ public class RocketCollision : MonoBehaviour
     IEnumerator NewHeading () {
 		while (true) {
 			//NewHeadingRoutine();
-			yield return new WaitForSeconds(2.0f);
+			yield return new WaitForSeconds(3.0f);
 		}
 	}
 }
