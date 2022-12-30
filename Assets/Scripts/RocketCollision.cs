@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 [RequireComponent(typeof(AudioSource))]
 public class RocketCollision : MonoBehaviour
@@ -34,7 +36,7 @@ public class RocketCollision : MonoBehaviour
             hit = true;
 
             Instantiate(explosionTank, target.transform.position, Quaternion.identity);
-            Destroy(target);
+            Destroy(target, 0.7f);
         }
         else{
             if(cameraEnd.enabled && collisionInfo.collider.tag != "Target"){    //u slucaju da se kamera pomakne, a ipak ne pogodi metu
