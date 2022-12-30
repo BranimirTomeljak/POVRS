@@ -12,15 +12,14 @@ public class MainMenu : MonoBehaviour
     }
 
     public void PlayGame(){
-        if (SceneManager.GetActiveScene().buildIndex + 1 == 3) {
-           SceneManager.LoadScene(1); 
-        } else {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        
+        SceneManager.LoadScene(1);        
     }
 
     public void QuitGame(){
         Application.Quit();
+    }
+
+    public void ReturnToMainMenu(){
+        SceneManager.LoadScene(0);
     }
 }
