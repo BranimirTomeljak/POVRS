@@ -6,14 +6,6 @@ using UnityEngine;
 public class TankAlive : MonoBehaviour
 {
 
-    public GameObject target;
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        target = GameObject.Find("Tank");
-    }
-
     // Update is called once per frame
     void Update()
     {
