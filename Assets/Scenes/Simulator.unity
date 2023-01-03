@@ -23399,7 +23399,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launcher: {fileID: 0}
   explosionElse: {fileID: 6595104980576682600, guid: d4beaf71e53029048ad2dae0fbbf1df7, type: 3}
-  explosionSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 71db613e04a86a545b67aed448d91082, type: 3}
+  randomTime: 2
   elapsedTime: 0
 --- !u!114 &9168968277958479232
 MonoBehaviour:
