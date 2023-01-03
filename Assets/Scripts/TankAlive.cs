@@ -10,13 +10,15 @@ public class TankAlive : MonoBehaviour
     void Update()
     {
         if(GameObject.Find("Tank") == null)
-            StartCoroutine(Wait2seconds());
+            StartCoroutine(ChangeScene());
     }
 
-    IEnumerator Wait2seconds () {
+    IEnumerator ChangeScene() {
 		while (true) {
             yield return new WaitForSeconds(2.0f);
             SceneManager.LoadScene(2);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
 		}
 	}
 }
