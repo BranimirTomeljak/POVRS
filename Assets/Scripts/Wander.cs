@@ -26,7 +26,7 @@ public class Wander : MonoBehaviour
 
 		// Set random initial rotation
 		heading = Random.Range(0, 360);
-		rand = Random.Range(0,3);
+		rand = Random.Range(0,10);
 		Debug.Log(rand);
 		string [] pos = txtFile.text.Split('\n');
 
