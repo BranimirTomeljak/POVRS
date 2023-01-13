@@ -8,7 +8,7 @@ public class RocketLauncher : MonoBehaviour
     public Camera cameraEnd;
     public GameObject rocketPrefab;
     public RaycastHit target;
-    public float speed = 20f;
+    public float speed = 50f;
 
     private void Start(){
         cameraPOVRS.enabled = true;
@@ -38,6 +38,7 @@ public class RocketLauncher : MonoBehaviour
         while(GameObject.Find("Tank") != null && Vector3.Distance(target.point, rocket.transform.position) > 0.3f)
         {
             if(target.transform.gameObject.tag == "Target" && Vector3.Distance(target.point, rocket.transform.position) < 25f){
+                cameraEnd.transform.position = new Vector3(target.transform.position.x + 25, target.transform.position.y + 25, target.transform.position.z + 25);
                 cameraEnd.transform.LookAt(target.point);
                 cameraEnd.enabled = true;
                 cameraPOVRS.enabled = false;
