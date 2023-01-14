@@ -13,6 +13,10 @@ public class Wander : MonoBehaviour
 	public TextAsset txtFile;
 	private Transform shoot;
 
+
+	private Transform tank;
+
+
 	CharacterController controller;
 	float heading;
 	int rand;
@@ -20,6 +24,10 @@ public class Wander : MonoBehaviour
 
 	void Awake ()
 	{
+		tank = GameObject.FindWithTag("Target").transform;
+		shoot = GameObject.FindWithTag("Shoot").transform;
+		shoot.LookAt(tank);
+
 		controller = GetComponent<CharacterController>();
 
 		// Set random initial rotation
@@ -31,7 +39,7 @@ public class Wander : MonoBehaviour
 		string [] field = pos[rand].Split(',');
 		Debug.Log("Ovdje");
 		Debug.Log(float.Parse(field[0]));
-		shoot = GameObject.FindWithTag("Shoot").transform;
+		
 		shoot.position = new Vector3(float.Parse(field[3]),float.Parse(field[4]),float.Parse(field[5]));
 		transform.position = new Vector3(float.Parse(field[0]),float.Parse(field[1]),float.Parse(field[2]));
 		transform.eulerAngles = new Vector3(0, heading, 0);
@@ -44,7 +52,8 @@ public class Wander : MonoBehaviour
 	} */
 
 	void Update ()
-	{
+	{	
+
 		transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
 		var forward = transform.TransformDirection(Vector3.forward);
 		controller.SimpleMove(forward * speed);

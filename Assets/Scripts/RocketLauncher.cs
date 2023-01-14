@@ -8,7 +8,7 @@ public class RocketLauncher : MonoBehaviour
     public Camera cameraEnd;
     public GameObject rocketPrefab;
     public RaycastHit target;
-    public float speed = 50f;
+    public float speed = 2500f;
 
     private void Start(){
         cameraPOVRS.enabled = true;
