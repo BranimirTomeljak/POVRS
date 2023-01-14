@@ -10,9 +10,12 @@ public class Wander : MonoBehaviour
 	public float speed = 5;
 	public float directionChangeInterval = 1;
 	public float maxHeadingChange = 30;
+	public TextAsset txtFile;
+	private Transform shoot;
 
 	CharacterController controller;
 	float heading;
+	int rand;
 	Vector3 targetRotation;
 
 	void Awake ()
@@ -21,6 +24,16 @@ public class Wander : MonoBehaviour
 
 		// Set random initial rotation
 		heading = Random.Range(0, 360);
+		rand = Random.Range(0,10);
+		Debug.Log(rand);
+		string [] pos = txtFile.text.Split('\n');
+
+		string [] field = pos[rand].Split(',');
+		Debug.Log("Ovdje");
+		Debug.Log(float.Parse(field[0]));
+		shoot = GameObject.FindWithTag("Shoot").transform;
+		shoot.position = new Vector3(float.Parse(field[3]),float.Parse(field[4]),float.Parse(field[5]));
+		transform.position = new Vector3(float.Parse(field[0]),float.Parse(field[1]),float.Parse(field[2]));
 		transform.eulerAngles = new Vector3(0, heading, 0);
 
 		StartCoroutine(NewHeading());
