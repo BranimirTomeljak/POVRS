@@ -17,9 +17,4 @@ public class StartPositioning : MonoBehaviour
 
         POVRS.transform.LookAt(tank.transform);
     }
-
-    void Update(){
-        if(Input.GetKeyDown("space"))
-            GameObject.Find("POVRS").transform.LookAt(GameObject.Find("Tank").transform);
-    }
 }
