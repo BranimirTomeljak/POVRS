@@ -44,9 +44,9 @@ public class RocketLauncher : MonoBehaviour
             }
 
             if(target.transform.gameObject.tag == "Target" && PlayerPrefs.GetString("enemyBehaviorSelected") == "Neprijatelj dinamičan")
-                rocket.transform.position += (target.transform.position - rocket.transform.position).normalized * speed * Time.deltaTime;
+                rocket.transform.position += (target.transform.position - rocket.transform.position).normalized * speed * 10 * Time.deltaTime;
             else
-                rocket.transform.position += (target.point - rocket.transform.position).normalized * speed * Time.deltaTime;
+                rocket.transform.position += (target.point - rocket.transform.position).normalized * speed * 10 * Time.deltaTime;
             rocket.transform.LookAt(target.point);
             yield return null;
         }
