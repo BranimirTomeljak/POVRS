@@ -17,6 +17,8 @@ public class TankAlive : MonoBehaviour
 		while (true) {
             yield return new WaitForSeconds(2.0f);
             SceneManager.LoadScene(2);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
 		}
 	}
 }

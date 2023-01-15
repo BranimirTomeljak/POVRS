@@ -57,7 +57,7 @@ public class Wander : MonoBehaviour
 		var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);
 		var ceil  = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
 		heading = Random.Range(floor, ceil);
-		Debug.Log(heading);
+		//Debug.Log(heading);
 		targetRotation = new Vector3(0, heading, 0);
 	}
 }

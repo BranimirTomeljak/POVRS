@@ -37,7 +37,7 @@ public class RocketLauncher : MonoBehaviour
         //ako je GameObject.Find("Tank") == null onda je tenk unisten u skripti RocketCollision.cs
         while(GameObject.Find("Tank") != null && Vector3.Distance(target.point, rocket.transform.position) > 0.3f)
         {
-            if(target.transform.gameObject.tag == "Target" && Vector3.Distance(target.point, rocket.transform.position) < 25f){
+            if(target.transform.gameObject.tag == "Target" && Vector3.Distance(target.point, rocket.transform.position) < 40f){
                 cameraEnd.transform.position = new Vector3(target.transform.position.x + 25, target.transform.position.y + 25, target.transform.position.z + 25);
                 cameraEnd.transform.LookAt(target.point);
                 cameraEnd.enabled = true;
