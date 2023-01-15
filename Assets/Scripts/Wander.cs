@@ -26,10 +26,6 @@ public class Wander : MonoBehaviour
 		StartCoroutine(NewHeading());
 	}
 
-	/* private void OnCollisionEnter(Collision collision) {
-   		Destroy(collision.gameObject);
-	} */
-
 	void Update ()
 	{
 		transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
@@ -57,7 +53,6 @@ public class Wander : MonoBehaviour
 		var floor = Mathf.Clamp(heading - maxHeadingChange, 0, 360);
 		var ceil  = Mathf.Clamp(heading + maxHeadingChange, 0, 360);
 		heading = Random.Range(floor, ceil);
-		//Debug.Log(heading);
 		targetRotation = new Vector3(0, heading, 0);
 	}
 }

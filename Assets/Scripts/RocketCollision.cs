@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 
 [RequireComponent(typeof(AudioSource))]
 public class RocketCollision : MonoBehaviour
@@ -30,7 +26,6 @@ public class RocketCollision : MonoBehaviour
         Debug.Log(collisionInfo.collider.transform);
 
         if(collisionInfo.collider.tag == "Target" && hit == false){
-            //var soundPosition = new Vector3(target.transform.position.x + 15f, target.transform.position.y + 15f, target.transform.position.z + 15f);
             AudioSource.PlayClipAtPoint(explosionSound, launcher.transform.position);
             Debug.Log("pogodio tenk!");
             hit = true;
@@ -44,7 +39,6 @@ public class RocketCollision : MonoBehaviour
                 cameraEnd.enabled = false;
             }
             
-            //explosionSound.
             if(collisionInfo.collider.name.StartsWith("Rock"))
                 AudioSource.PlayClipAtPoint(explosionSound, launcher.transform.position);
             else

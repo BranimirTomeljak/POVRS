@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FogDensitySimulator : MonoBehaviour
@@ -8,7 +6,7 @@ public class FogDensitySimulator : MonoBehaviour
     {
         RenderSettings.fog = true;
         RenderSettings.fogDensity = PlayerPrefs.GetFloat("fogDensityValue");    //[0, 0.05f]
-        RenderSettings.fogEndDistance = 3000f;                                  //3000 metara
+        RenderSettings.fogEndDistance = 1500f;                                  //1500 metara
     }
 
 }
